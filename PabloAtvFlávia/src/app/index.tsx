@@ -1,4 +1,5 @@
 import { 
+  Alert, // Adicionado para o alerta funcionar
   Image, 
   StyleSheet, 
   Text, 
@@ -6,11 +7,17 @@ import {
   View, 
   ScrollView, 
   KeyboardAvoidingView, 
-  Platform 
+  Platform,
+  TouchableOpacity // Adicionado para transformar o texto em um botão clicável
 } from 'react-native'; 
 import { Link } from "expo-router";
 
 export default function Index() {
+  // Função que dispara o alerta ao clicar em Entrar
+  function handleSignIn() {
+    Alert.alert("Entrar", "Função acionada");
+  }
+
   return (
     <KeyboardAvoidingView 
       style={{ flex: 1 }} 
@@ -21,7 +28,6 @@ export default function Index() {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.container}>
-          {/* Imagem usando o caminho atualizado que você passou */}
           <Image 
             source={require("../assets/castaldi.jpeg")}
             style={styles.illustration} 
@@ -43,9 +49,10 @@ export default function Index() {
               secureTextEntry={true} 
             />
             
-            <View>
+            {/* O botão agora é clicável e chama a função handleSignIn */}
+            <TouchableOpacity onPress={handleSignIn} activeOpacity={0.7}>
               <Text style={styles.buttonPlaceholder}>Entrar</Text>
-            </View>
+            </TouchableOpacity>
 
             <Text style={styles.footerText}>
               Não tem uma conta ?{" "}
