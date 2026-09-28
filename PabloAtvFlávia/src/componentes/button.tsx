@@ -8,6 +8,7 @@ import {
 type ButtonProps = TouchableOpacityProps & {
   Label: string;
 };
+
 export function Button({ Label, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.container} {...rest}>
